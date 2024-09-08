@@ -4,28 +4,22 @@ const mongoose = require("mongoose");
 const http = require('http');
 const { Server } = require("socket.io");
 const Document = require("./doc");
+const cors = require("cors")
 
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigins = process.env.CORS_ORIGINS.split(',');
-
+// const allowedOrigins = process.env.CORS_ORIGINS.split(',');
 app.get('/', (req,res)=>{
   res.send('hello')
 })
 
-const io = new Server(server, {
-  cors: {
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ["GET", "POST"],
-  },
-});
+const io = new Server(server, {cors:{
+origin: '*',
+methods: ['GET', 'POST']
+}
+}
+);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
