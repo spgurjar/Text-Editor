@@ -1,4 +1,4 @@
-*, *::before, *::after {
+/* *, *::before, *::after {
     box-sizing: border-box;
   }
   
@@ -131,6 +131,174 @@
     }
   
     .container .ql-toolbar.ql-snow {
+      display: none;
+    }
+  } */
+
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #F3F3F3;
+    margin: 0;
+  }
+  
+  .edit-text-container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .container .ql-editor {
+    width: 100%;
+    max-width: 8.5in;
+    min-height: 11in;
+    padding: 1in;
+    margin: 1rem auto;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+    background-color: white;
+  }
+  
+  .container .ql-container.ql-snow {
+    border: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container .ql-toolbar.ql-snow {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #F3F3F3;
+    border: none;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+    flex-wrap: wrap;
+  }
+  
+  .toolbar-wrapper {
+    position: relative;
+  }
+  
+  .custom-toolbar {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+  }
+  
+  .save-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 32px;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 3px;
+  }
+  
+  .saveBtn {
+    background-color: inherit;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .dropdown-content button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .save, .share {
+    padding: 5px 10px;
+    background-color: #0a80d3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .share-message {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  @media (max-width: 1000px) {
+    .container .ql-editor {
+      padding: 0.5in;
+      margin: 0.5rem;
+    }
+  
+    .custom-toolbar.mobile {
+      top: auto;
+      bottom: 10px;
+      right: 10px;
+    }
+  
+    .custom-toolbar.mobile .save,
+    .custom-toolbar.mobile .share {
+      /* font-size: 24px; */
+      /* padding: 5px; */
+      /* width: 40px; */
+      /* height: 40px; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .dropdown-content {
+      bottom: 45px;
+      top: auto;
+    }
+  
+    .share-message {
+      top: auto;
+      width: 10rem;
+      bottom: 60px;
+      right: 10px;
+      /* left: 10px; */
+      text-align: center;
+    }
+  }
+  
+  @page {
+    margin: 1in;
+  }
+  
+  @media print {
+    body {
+      background: none;
+    }
+  
+    .container .ql-editor {
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+      align-self: flex-start;
+    }
+  
+    .container .ql-toolbar.ql-snow,
+    .custom-toolbar,
+    .share-message {
       display: none;
     }
   }
