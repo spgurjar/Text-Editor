@@ -8,9 +8,21 @@ const Document = require("./doc");
 const app = express();
 const server = http.createServer(app);
 
+const allowedOrigins = process.env.CORS_ORIGINS.split(',');
+
+app.get('/', (req,res)=>{
+  res.send('hello')
+})
+
 const io = new Server(server, {
   cors: {
-    origin: [ "https://text-editor-livid-phi.vercel.app", "http://localhost:3000"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: ["GET", "POST"],
   },
 });
