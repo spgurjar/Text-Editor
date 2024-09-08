@@ -31,7 +31,7 @@ export default function EditText() {
   
 
   useEffect(() => {
-    const s = io(process.env.REACT_APP_BASE_URL)
+    const s = io("https://text-editor-qn87.vercel.app/")
     console.log("base", process.env.REACT_APP_BASE_URL)
     setSocket(s)
 

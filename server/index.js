@@ -9,18 +9,18 @@ const cors = require("cors")
 const app = express();
 const server = http.createServer(app);
 
+app.use(cors())
 // const allowedOrigins = process.env.CORS_ORIGINS.split(',');
 app.get('/', (req,res)=>{
   res.send('hello')
 })
 
-const io = new Server(server, {cors:{
-origin: '*',
-methods: ['GET', 'POST']
-}
-}
-);
-
+const io = new Server(server, {
+  cors: {
+    origin: "*",  // Adjust this to match your frontend URL in production
+    methods: ["GET", "POST"]
+  }
+});
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch(err => console.error("Could not connect to MongoDB:", err));
