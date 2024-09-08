@@ -31,7 +31,7 @@ export default function EditText() {
   
 
   useEffect(() => {
-    const s = io("http://localhost:3001/")
+    const s = io(process.env.REACT_APP_BASE_URL)
     console.log("base", process.env.REACT_APP_BASE_URL)
     setSocket(s)
 
